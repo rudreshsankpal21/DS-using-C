@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
-#define MAX 5
+#define MAX 10
 
 int queue[MAX];
-int front = -1, rear = -1;
+int front = -1 , rear = -1;
 
 void enqueue(int elem){
     if (front == -1 && rear == -1)
@@ -12,7 +12,7 @@ void enqueue(int elem){
         front = 0;
         rear = 0;
         queue[rear] = elem;
-    } else if ((rear + 1 ) % MAX == front)
+    } else if ((rear + 1) % MAX == front)
     {
         printf("Queue is full\n");
         
@@ -20,54 +20,51 @@ void enqueue(int elem){
         rear = (rear + 1);
         queue[rear] = elem;
     }
+    
 }
 
 void dequeue(){
-    if ((front == -1) && (rear == -1))
-    {
+    if((front == -1) && (rear == -1)){
         printf("Queue is empty\n");
     } else if (front == rear)
     {
-        printf("\nThe dequeued element is %d",queue[front]);
+        printf("Element deleted successfully\n");
         front = -1;
-        rear = -1;
+        rear = -1;        
     } else {
-        printf("\nThe dequeued element is %d",queue[front]);
+        printf("Element deleted successfully\n");
         front = (front + 1);
     }
-    
 }
 
+
 void display(){
-    int i = front;
+    int i;
     if (front == -1 && rear == -1)
     {
         printf("Queue is empty\n");
+    } else {
+        printf("Elements of queue are\n");
+        for ( i = front; i <= rear; i++)
+        {
+            printf("%d\n",queue[i]);
+        }        
     }
-
-    printf("\nElements of queue are\n");
-    for ( i = front; i <= rear; i++)
-    {
-        printf("\n%d",queue[i]);
-        
-    }
-    
 }
 
-
 int main(){
-    int choice, elem;
+    int choice,n;
     while (choice != 4)
     {
-        printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+        printf("\n1.Insert\n2.Delete\n3.Display\n4.Exit\n");
         printf("Enter your choice\n");
         scanf("%d",&choice);
         switch (choice)
         {
         case 1:
             printf("Enter the element to be inserted\n");
-            scanf("%d",&elem);
-            enqueue(elem);
+            scanf("%d",&n);
+            enqueue(n);
             break;
         case 2:
             dequeue();
@@ -82,6 +79,7 @@ int main(){
             printf("Invalid choice\n");
             break;
         }
+ 
     }
-    return 0;
+ return 0;  
 }
