@@ -2,27 +2,27 @@
 #include <conio.h>
 #include <stdlib.h>
 
-struct node{
+struct Node{
     int data;
-    struct node *next;
+    struct Node* next;
 };
 
-struct node *new,*head,*tail,*temp;
+ struct Node *newNode, *head,*tail,*temp;
 
-void create(int val){
-   struct node *newNode =  (struct node*)malloc(sizeof(struct node));
-   newNode -> data = val;
-   newNode -> next = NULL;
+void createLL(int val){
+    newNode = (struct Node*)malloc(sizeof(struct Node));
 
-   if (head == NULL)
-   {
-    head = newNode;
-    tail = newNode;
-   } else {
-    tail -> next = newNode;
-    tail = newNode;
-   }
-   
+    newNode -> data = val;
+    newNode -> next = NULL;
+
+    if (head == NULL)
+    {
+        head = newNode;
+        tail = newNode;
+    } else {
+        tail -> next = newNode;
+        tail = newNode;
+    }
 }
 
 
@@ -30,27 +30,23 @@ void display(){
     temp = head;
     while (temp != NULL)
     {
-        printf("%d -> ",temp->data);
-        temp = temp->next;
+        printf("%d ->",temp -> data);
+        temp = temp -> next;
     }
     printf("NULL");
 }
 
-
-int main()
-{
-    int n,value;
-    printf("Enter nodes you want to create");
+int main(){
+    int n,val;
+    printf("Enter no. of nodes you want to enter : ");
     scanf("%d",&n);
     for (int i = 0; i < n; i++)
     {
-        printf("Enter the value");
-        scanf("%d",&value);
-        create(value);
+        printf("Enter value : ");
+        scanf("%d",&val);
+        createLL(val);        
     }
-
-    display();
-
     
+    display();
     return 0;
 }
