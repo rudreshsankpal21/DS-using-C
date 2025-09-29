@@ -2,15 +2,15 @@
 #include <conio.h>
 #include <stdlib.h>
 
-struct Node{
+struct node{
     int data;
-    struct Node* next;
+    struct node *next;
 };
 
- struct Node *newNode, *head,*tail,*temp;
+struct node *head,*tail,*temp,*newNode;
 
 void createLL(int val){
-    newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode = (struct node*)malloc(sizeof(struct node));
 
     newNode -> data = val;
     newNode -> next = NULL;
@@ -19,34 +19,38 @@ void createLL(int val){
     {
         head = newNode;
         tail = newNode;
-    } else {
+
+    }
+     else {
         tail -> next = newNode;
         tail = newNode;
-    }
+     }
+    
 }
-
 
 void display(){
     temp = head;
     while (temp != NULL)
     {
-        printf("%d ->",temp -> data);
+        printf(" %d ->",temp -> data);
         temp = temp -> next;
     }
     printf("NULL");
+    
 }
 
-int main(){
-    int n,val;
-    printf("Enter no. of nodes you want to enter : ");
+void main(){
+
+    int n,val,i;
+    printf("Enter the number of nodes : ");
     scanf("%d",&n);
-    for (int i = 0; i < n; i++)
+    for ( i = 0; i < n; i++)
     {
-        printf("Enter value : ");
+        printf("Enter the value of node %d : ",i+1);
         scanf("%d",&val);
-        createLL(val);        
+        createLL(val);
     }
-    
     display();
-    return 0;
+
+    
 }
