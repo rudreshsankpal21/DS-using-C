@@ -8,7 +8,8 @@ struct node{
 };
 
 struct node *head,*tail,*temp,*newNode;
-void insertAtBeginning(struct node **head,int val){
+
+void insertAtBeginning(struct node**head, int val){
     newNode = (struct node*)malloc(sizeof(struct node));
 
     newNode -> data = val;
@@ -17,25 +18,21 @@ void insertAtBeginning(struct node **head,int val){
     *head = newNode;
 }
 
-
 void printList(){
     temp = head;
-    while (head != NULL)
+    while (temp != NULL)
     {
-        printf(" %d ->",temp -> data);
+        printf("%d -> ",temp -> data);
         temp = temp -> next;
     }
+    
 }
 
-
 int main(){
-
-    insertAtBeginning(&head,10);
-    insertAtBeginning(&head,20);
+    insertAtBeginning(&head,50);
+    insertAtBeginning(&head,40);
     insertAtBeginning(&head,30);
-    insertAtBeginning(&head,100);
-    insertAtBeginning(&head,5);
-
+    insertAtBeginning(&head,20);
+    insertAtBeginning(&head,10);
     printList();
-    return 0;
 }
