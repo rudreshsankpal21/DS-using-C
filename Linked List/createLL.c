@@ -2,55 +2,52 @@
 #include <conio.h>
 #include <stdlib.h>
 
-struct node{
+struct Node
+{
     int data;
-    struct node *next;
+    struct Node *next;
 };
 
-struct node *head,*tail,*temp,*newNode;
 
-void createLL(int val){
-    newNode = (struct node*)malloc(sizeof(struct node));
+struct Node *head, *tail, *temp, *newNode;
+
+void insert(int val){
+    newNode = (struct Node*)malloc(sizeof(struct Node));
 
     newNode -> data = val;
     newNode -> next = NULL;
-
     if (head == NULL)
     {
         head = newNode;
         tail = newNode;
-
-    }
-     else {
+    } else {
         tail -> next = newNode;
         tail = newNode;
-     }
-    
+    }
+    printf("Value inserted successfully\n");
 }
 
 void display(){
     temp = head;
     while (temp != NULL)
     {
-        printf(" %d ->",temp -> data);
+        printf("%d -> ",temp -> data);
         temp = temp -> next;
     }
     printf("NULL");
     
 }
 
-void main(){
-
-    int n,val,i;
+int main(){
+    int n,val;
     printf("Enter the number of nodes : ");
     scanf("%d",&n);
-    for ( i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        printf("Enter the value of node %d : ",i+1);
+        printf("Enter the value : ");
         scanf("%d",&val);
-        createLL(val);
+        insert(val);
     }
-    display();
-
-    
+    display(); 
+    return 0;
 }
