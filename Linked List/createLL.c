@@ -4,7 +4,7 @@
 
 struct node {
     int data;
-    struct node* next;
+    struct node *next;
 };
 
 struct node *head,*tail,*temp,*newNode;
@@ -15,24 +15,23 @@ void insert(int val){
     newNode -> data = val;
     newNode -> next = NULL;
 
-    if (head == NULL)
-    {
+    if(head == NULL){
         head = newNode;
         tail = newNode;
-    }
-     else {
+    } else {
         tail -> next = newNode;
         tail = newNode;
-     }
-     printf("Value inserted\n");
+    }
+
+printf("Element inserted successfully\n");
 }
+
 
 void display(){
     temp = head;
-    while(temp != NULL)
-
+    while (temp != NULL)
     {
-        printf("%d -> ", temp -> data);
+        printf("%d -> " , temp -> data);
         temp = temp -> next;
     }
     printf("NULL");
@@ -43,7 +42,7 @@ int main(){
     printf("Enter no. of nodes want to enter : ");
     scanf("%d",&n);
     for(int i = 0; i < n; i++){
-        printf("Enter value to be inserted : ");
+        printf("Enter values to be inserted : ");
         scanf("%d",&val);
         insert(val);
     }
