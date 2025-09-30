@@ -1,43 +1,42 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <conio.h>
+#include <stdlib.h>
 
 struct node {
-    int data;
-    struct node *next;
+int data;
+struct node *next;
 };
 
-struct node *tail,*newNode,*temp;
+struct node *head,*tail,*temp,*newNode;
 
-void insertInBetween(struct node *prevNode,int val){
-
+void insetInBetween(struct node *prevNode, int val){
     newNode = (struct node*)malloc(sizeof(struct node));
-
     if (prevNode == NULL)
     {
-        printf("Previous node cannnot be NULL\n");
-        return;
+        printf("Previous node cannot be NULL\n");
     }
-
+    
     newNode -> data = val;
     newNode -> next = prevNode -> next;
     prevNode -> next = newNode;
 }
 
-void display(struct node *head){
-    while (head != NULL)
+void display(){
+    temp = head;
+    while (temp != NULL)
     {
-        printf("%d -> " , head -> data);
-        head = head -> next;
+        printf("%d -> " , temp -> data);
+        temp = temp -> next;
     }
     printf("NULL\n");
 }
 
+
 int main(){
-    struct node *head = (struct node*)malloc(sizeof(struct node));
+    head = (struct node*)malloc(sizeof(struct node));
     struct node *second = (struct node*)malloc(sizeof(struct node));
     struct node *third = (struct node*)malloc(sizeof(struct node));
-
+    
 
     head -> data = 10;
     head -> next = second;
@@ -45,14 +44,13 @@ int main(){
     second -> data = 20;
     second -> next = third;
 
-    third -> data = 30;
+    third  -> data = 30;
     third -> next = NULL;
 
-    printf("Before insertion\n");
-    display(head);
-    insertInBetween(second,50);
-    printf("After insertion\n");
-    display(head);
-
+    printf("Original Linked List\n");
+    display();
+    insetInBetween(head, 15);
+    printf("Linked List after insertion\n");
+    display();
     return 0;
 }
