@@ -2,24 +2,22 @@
 #include <conio.h>
 #include <stdlib.h>
 
-struct node{
+struct node {
     int data;
     struct node *next;
 };
 
-struct node *head ,*temp , *tail, *newNode;
+struct node *temp,*head,*tail,*newNode;
 
-
-void insertAtBeginning(struct node ** head , int val){
+void insertAtBeginning(struct node ** head, int val){
     newNode = (struct node*)malloc(sizeof(struct node));
 
     newNode -> data = val;
     newNode -> next = *head;
-
     *head = newNode;
 }
 
-void display(struct node *head){
+void display(){
     temp = head;
     while (temp != NULL)
     {
@@ -29,10 +27,13 @@ void display(struct node *head){
     printf("NULL");
 }
 
-int main(){
+int main(int argc, char const *argv[])
+{
     insertAtBeginning(&head,10);
-    insertAtBeginning(&head,20);
     insertAtBeginning(&head,30);
-    display(head);
+    insertAtBeginning(&head,20);
+    insertAtBeginning(&head,90);
+    insertAtBeginning(&head,50);
+    display();
     return 0;
 }
