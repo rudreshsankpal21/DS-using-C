@@ -2,12 +2,12 @@
 #include <conio.h>
 #include <stdlib.h>
 
-struct node {
+struct node{
     int data;
     struct node *next;
 };
 
-struct node *head,*tail,*temp,*newNode;
+struct node *temp,*tail,*head,*newNode;
 
 void insert(int val){
     newNode = (struct node*)malloc(sizeof(struct node));
@@ -15,34 +15,34 @@ void insert(int val){
     newNode -> data = val;
     newNode -> next = NULL;
 
-    if(head == NULL){
+    if (head == NULL)
+    {
         head = newNode;
-        tail = newNode;
+        tail = newNode; 
     } else {
         tail -> next = newNode;
         tail = newNode;
     }
-
-printf("Element inserted successfully\n");
 }
-
 
 void display(){
-    temp = head;
+    temp = head ;
+
     while (temp != NULL)
     {
-        printf("%d -> " , temp -> data);
+        printf("%d -> ", temp -> data);
         temp = temp -> next;
     }
-    printf("NULL");
+    printf("NULL\n");
 }
 
-int main(){
-    int n,val;
-    printf("Enter no. of nodes want to enter : ");
+int main(int argc, char const *argv[])
+{
+    int n,i,val;
+    printf("enter no. of elements you want to insert : ");
     scanf("%d",&n);
-    for(int i = 0; i < n; i++){
-        printf("Enter values to be inserted : ");
+    for(i = 0;  i < n ; i++){
+        printf("Enter the value of node %d : ",i + 1);
         scanf("%d",&val);
         insert(val);
     }
