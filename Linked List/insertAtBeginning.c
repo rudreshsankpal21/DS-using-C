@@ -3,13 +3,14 @@
 #include <stdlib.h>
 
 struct node {
- int data;
- struct node *next;
+    int data;
+    struct node *next;
 };
 
 struct node *head,*tail,*temp,*newNode;
 
-void insertAtBeginning(struct node **head,int val){
+
+void insertAtBeginning(struct node ** head,int val){
     newNode = (struct node*)malloc(sizeof(struct node));
 
     newNode -> data = val;
@@ -20,7 +21,6 @@ void insertAtBeginning(struct node **head,int val){
 
 
 void display(){
-
     temp = head;
 
     while (temp != NULL)
@@ -31,12 +31,14 @@ void display(){
     printf("NULL\n");
 }
 
-
 int main()
 {
     insertAtBeginning(&head,10);
     insertAtBeginning(&head,20);
     insertAtBeginning(&head,30);
-    display(head);
+    insertAtBeginning(&head,40);
+    insertAtBeginning(&head,50);
+    display();
+
     return 0;
 }
