@@ -3,37 +3,40 @@
 #include <stdlib.h>
 
 struct node {
-    int data;
-    struct node *next;
+ int data;
+ struct node *next;
 };
 
-struct node *temp,*head,*tail,*newNode;
+struct node *head,*tail,*temp,*newNode;
 
-void insertAtBeginning(struct node ** head, int val){
+void insertAtBeginning(struct node **head,int val){
     newNode = (struct node*)malloc(sizeof(struct node));
 
     newNode -> data = val;
     newNode -> next = *head;
+
     *head = newNode;
 }
 
+
 void display(){
+
     temp = head;
+
     while (temp != NULL)
     {
-        printf("%d -> " , temp -> data);
+        printf("%d -> ", temp -> data);
         temp = temp -> next;
     }
-    printf("NULL");
+    printf("NULL\n");
 }
 
-int main(int argc, char const *argv[])
+
+int main()
 {
     insertAtBeginning(&head,10);
-    insertAtBeginning(&head,30);
     insertAtBeginning(&head,20);
-    insertAtBeginning(&head,90);
-    insertAtBeginning(&head,50);
-    display();
+    insertAtBeginning(&head,30);
+    display(head);
     return 0;
 }
