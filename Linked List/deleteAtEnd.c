@@ -20,26 +20,24 @@ struct node* createNode(int val){
 }
 
 
-struct node* deleteAtEnd(struct node* head){
-    if (head == NULL)
-    {
+struct node* deleteAtEnd(struct node* head) {
+    if (head == NULL) {
+        printf("List is empty!\n");
         return NULL;
     }
-    
-    if (head -> next == NULL)    {
+
+    if (head->next == NULL) {
         free(head);
         return NULL;
     }
 
-    struct node* second_last = head;
-
-    while (second_last -> next -> next != NULL)
-    {
-        second_last = second_last -> next;
+    struct node* temp = head;
+    while (temp->next->next != NULL) {
+        temp = temp->next;
     }
 
-    free(second_last -> next);
-    second_last -> next = NULL;
+    free(temp->next);
+    temp->next = NULL;
 
     return head;
 }
